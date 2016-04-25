@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registrate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="css/registroStyle.css" rel="stylesheet" type="text/css" />
+        
+    </h:head>
+    <h:body>
+        
+        <h:form>
+           
+            
+            <!--Mensaje de que las contraseñas no coinciden-->
+            
+             <p:growl id="growl" showDetail="true" sticky="true" />  
+            <p:panelGrid id="matchGrid" columns="1" styleClass="registro" >
+                
+               
+                <h2>Registrate</h2>
+                <h:outputLabel for="nombre" value="Nombre" />
+                <p:inputText id="nombre" value="#{usuarioBean.user.nombre}" required="true" />  
+
+                <h:outputLabel for="correo" value="Correo de ciencias: " />
+                <p:inputText id="correo" value="#{UsuarioBean.user.correo}"/>
+
+                <h:outputLabel for="pwd1" value="Contraseña: " />
+                <p:password id="pwd1" value="#{UsuarioBean.user.passwrd}" match="pwd2" label="Password 1" required="true" />
+
+                <h:outputLabel for="pwd2" value="Repite Contraseña: " />
+                <p:password id="pwd2" label="Password 2" required="true" /><br/>
+
+                <p:commandButton value="Registrar" actionListener="#{UsuarioBean.insertar()}" update="growl" />
+                
+            </p:panelGrid>
+            
+        </h:form>
+         
+    </h:body>
+</html>

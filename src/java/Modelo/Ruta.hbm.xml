@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2016 03:50:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Ruta" table="ruta" schema="public" optimistic-lock="version">
+        <id name="idruta" type="int">
+            <column name="idruta" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="Modelo.Usuario" fetch="select">
+            <column name="idusuario" />
+        </many-to-one>
+        <property name="destino" type="string">
+            <column name="destino" length="50" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="13" not-null="true" />
+        </property>
+        <property name="hora" type="time">
+            <column name="hora" length="15" not-null="true" />
+        </property>
+        <property name="cupo" type="int">
+            <column name="cupo" not-null="true" />
+        </property>
+        <set name="creacions" table="creacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idruta" />
+            </key>
+            <one-to-many class="Modelo.Creacion" />
+        </set>
+        <set name="viajes" table="viaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idruta" />
+            </key>
+            <one-to-many class="Modelo.Viaje" />
+        </set>
+    </class>
+</hibernate-mapping>

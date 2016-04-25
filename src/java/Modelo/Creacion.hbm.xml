@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2016 03:50:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Creacion" table="creacion" schema="public" optimistic-lock="version">
+        <id name="idcreacion" type="int">
+            <column name="idcreacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ruta" class="Modelo.Ruta" fetch="select">
+            <column name="idruta" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Modelo.Usuario" fetch="select">
+            <column name="idusuario" />
+        </many-to-one>
+        <property name="pago" type="string">
+            <column name="pago" length="50" />
+        </property>
+        <property name="calificacion" type="java.lang.Integer">
+            <column name="calificacion" />
+        </property>
+    </class>
+</hibernate-mapping>

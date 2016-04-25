@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2016 03:50:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Viaje" table="viaje" schema="public" optimistic-lock="version">
+        <composite-id name="id" class="Modelo.ViajeId">
+            <key-property name="idruta" type="java.lang.Integer">
+                <column name="idruta" />
+            </key-property>
+            <key-property name="idusuario" type="java.lang.Integer">
+                <column name="idusuario" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="ruta" class="Modelo.Ruta" update="false" insert="false" fetch="select">
+            <column name="idruta" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Modelo.Usuario" update="false" insert="false" fetch="select">
+            <column name="idusuario" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
